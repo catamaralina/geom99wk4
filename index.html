@@ -55,19 +55,21 @@
     <script src="https://js.arcgis.com/4.28/"></script>
 
     <script>
+        // IF IT IS NOT WORKING CHECK YOUR ;;;;;; 
+        // THEY MIGHT BE MISSING 
         require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
-            esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N"
+            esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
 
             const map = new Map({
                 basemap: "arcgis/topographic" // basemap style services
-            })
+            });
 
             const view = new MapView({
                 map: map,
                 center: [135.7354089, 35.0175169], // long/lat
                 zoom: 13, // zoom level
                 container: "viewDiv" // div element
-            })
+            });
 
         });
       </script>
