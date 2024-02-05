@@ -1,0 +1,111 @@
+<!-- SOURCE: https://developers.google.com/maps/documentation/javascript/examples/advanced-markers-accessibility -->
+<html lang="ja">
+  <head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Hello, Kyoto</title>
+
+    <style>
+        div.content, .banner {
+          border: solid #e46b85 2px;
+          max-width: 900px;
+          align-content: center;
+          background-color: white;
+          margin: auto;
+          padding: 20px;
+          float: center;
+          margin-bottom: 10px;
+          height: auto;
+        }
+
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 75%;
+            width: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #F9AABB;
+            float: center;
+            font-family: 'Lucida Sans Regular', sans-serif;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+        h1, p { color: #25242A; text-align: center;}
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.28/"></script>
+
+    <script>
+        require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
+            esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N"
+
+            const map = new Map({
+                basemap: "arcgis/topographic" // basemap style services
+            })
+
+            const view = new MapView({
+                map: map,
+                center: [135.7354089, 35.0175169], // long/lat
+                zoom: 13, // zoom level
+                container: "viewDiv" // div element
+            })
+
+        });
+      </script>
+
+  </head>
+
+  
+  <body>
+    <div class="banner">
+      <h1>京都市</h1> <!--Kyoto-->
+      <p>それぞれの場所が面白くて、自然が美しい。</p> <!--Each place is interesting and has beautiful nature-->
+
+      <p>注記：一部の座標はオフセットして配置されます。</p> <!--Note: Some coordinates are placed offset-->
+      <p>ごめん。</p>
+      <p>WDPA: 3, 4, 5, 8, 7</p>
+      <p>&#127807;&#127800; &#127802; &#x1F338;&#127807;&#127809;</p>
+    </div>
+
+    <div class="content">
+      <div id="viewDiv"></div>
+
+    </div>
+
+    
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+
+
+      <!--Localizing the map: Add JP language-->
+      <!-- Source: https://developers.google.com/maps/documentation/javascript/examples/map-language -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv3MGflguusDaLmV_-BUlmuoUI4EbM88w&callback=initMap&v=weekly&language=ja&region=JP"
+      defer
+    ></script>
+  </body>
+</html>
