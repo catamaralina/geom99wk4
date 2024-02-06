@@ -17,12 +17,14 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
     <script>
-      require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/widgets/ScaleBar", "esri/widgets/Legend"], 
-      function(esriConfig, WebMap, MapView, ScaleBar, Legend) {
+      require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/widgets/ScaleBar", "esri/widgets/Legend", "esri/Graphic",
+    "esri/layers/GraphicsLayer"], 
+      function(esriConfig, WebMap, MapView, ScaleBar, Legend, Graphic, GraphicsLayer) {
       // esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
       const webmap = new WebMap({
         portalItem: {
-        id: "c2a933f40b884dfdacfa6bfec16f2fa7" // empty web map
+        id: "adbc517c825348d5a27a0b263b18fc5c"
+        //  id: "c2a933f40b884dfdacfa6bfec16f2fa7" // empty web map
         }
       });
 
@@ -30,7 +32,34 @@
         container: "viewDiv",
         map: webmap
       });
+//------------ADDING GRAPHICS: TO WEB MAP??
+      const graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
 
+      const point = { //Create a point
+        type: "point",
+        longitude: -118.80657463861,
+        latitude: 34.0005930608889
+      };
+
+      const simpleMarkerSymbol = {
+        type: "simple-marker",
+        color: [226, 119, 40],  // Orange
+        outline: {
+        color: [255, 255, 255], // White
+        width: 1
+        }
+      };
+
+      const pointGraphic = new Graphic({
+        geometry: point,
+        symbol: simpleMarkerSymbol
+      });
+      graphicsLayer.add(pointGraphic);
+
+
+
+//-------WEB MAP--------
       const scalebar = new ScaleBar({
         view: view
       });
