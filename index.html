@@ -71,7 +71,7 @@
       //SET UP VIEW AND MAP FOCUS
       const view = new MapView({
         map: map,
-        center: [-118.805, 34.027], // Longitude, latitude
+        center: [135.7354089, 35.0175169], // Longitude, latitude
         zoom: 13, // Zoom level
         container: "viewDiv" // Div element
       });
@@ -88,23 +88,24 @@
       //CREATE POINT
       const point = { 
         type: "point",
-        longitude: -118.80657463861,
-        latitude: 34.0005930608889
+        longitude: 135.7463893,
+        latitude: 34.9864358
       };
 
       const simpleMarkerSymbol = {
         type: "simple-marker",
-        color: [226, 119, 40],  // Orange
+        color: [249,170,187],  // Light pink
         outline: {
-          color: [255, 255, 255], // White
+          color: [211,115,179], // Darker pink
           width: 1
         }
       };
 
       const attributesP = {
-        Name: "point",
-        Description: "I AM WITHOUT DIRECTION"
+        Name: "Umekoji Park",
+        Description: "Park with fields and walking areas and an aquarium."
       }
+
       //ADD POINT GRAPHIC
       const pointGraphic = new Graphic({
         geometry: point,
@@ -120,20 +121,20 @@
       const polyline = {
           type: "polyline",
           paths: [
-              [-118.821527826096, 34.0139576938577], //Longitude, latitude
-              [-118.814893761649, 34.0080602407843], //Longitude, latitude
-              [-118.808878330345, 34.0016642996246]  //Longitude, latitude
+              [135.7625979, 35.0485703], //Longitude, latitude 
+              [135.7604489, 35.0376503], //Longitude, latitude
+              [135.7635486, 35.0230347]  //Longitude, latitude
           ]
       };
       const simpleLineSymbol = {
           type: "simple-line",
-          color: [226, 119, 40], // Orange
+          color: [211,115,179], // darker pink
           width: 2
       };
 
       const attributesPL = {
-        Name: "LINE",
-        Description: "I AM A LINE"
+        Name: "I'm a flower person.",
+        Description: "Lovely walk in gardens."
       }
       // POLYLINE
       const polylineGraphic = new Graphic({
@@ -146,6 +147,46 @@
       });
       graphicsLayer.add(polylineGraphic);
 
+             // CREATE POLYGON GEOMETRY
+             const polygon = {
+        type: "polygon",
+        rings: [
+          [135.6778374, 35.0122519], //Longitude, latitude //Monkey park
+          [135.6687254, 35.0168184], //Longitude, latitude //Bamboo forest
+          [135.6681809, 35.0141878], //Longitude, latitude //tenryu-ji
+          [135.6720652, 35.0132434],   //Longitude, latitude //kimono forest
+          [135.6798793, 35.0124269]  //Longitude, latitude //island park
+        ]
+      };
+
+      //FILL POLYGON
+      const simpleFillSymbol = {
+        type: "simple-fill",
+        color: [249, 170, 187, .75],  // light pink, opacity 75%
+        outline: {
+          color: [211, 115,179], //dark pink
+          width: 1
+        }
+      };
+
+      //POLYGON POPUP
+      const attributesPG = {
+        Name: "Arashiyama",
+        Description: "A good area to just walk around."
+      }
+
+      // POLYGON GRAPHIC ADD
+      const polygonGraphic = new Graphic({
+        geometry: polygon,
+        symbol: simpleFillSymbol,
+
+        //POP UP ADDITION
+        attributes: attributesPG,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(polygonGraphic);
+
+
       });
     </script>
 
@@ -154,13 +195,11 @@
   
   <body>
     <div class="banner">
-      <h1>京都市</h1> <!--Kyoto-->
-      <p></p> <!--Each place is interesting and has beautiful nature-->
-
-      <p></p> <!--Note: Some coordinates are placed offset-->
-      <p></p>
-      <p>WDPA: 3, 4, 5, 8, 7</p>
-      <p>&#127807; &#127800; &#128149; &#127802; &#x1F338; &#128149; &#127807; &#127809;</p>
+      <h1>京都市 | Kyoto</h1> <!--Kyoto-->
+      <p>Place: Umekoji Park with Kyoto Aquarium in it.</p>
+      <p>Day: Day starting with Kyoto Botanical Gardens, then walking in Kamagawa Park along the river, a world protected area, and stopping to look at herons and other wildlife. All the while heading towards Kyoto National Garden to end the day.</p>
+      <p>Area: Arashiyama is a good place to wander and see what is interesting. Parks to walk in, monkeys to feed, things to see, food to eat.</p>
+      <p>&#128149; &#127807; &#127800; &#128149; &#127802; &#x1F338; &#127809; &#127807;  &#128149;</p>
     </div>
 
     <div class="content">
