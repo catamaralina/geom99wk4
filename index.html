@@ -57,24 +57,39 @@
 
     <script>
      //IMPORT REQUIRED MODULES
-     require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
+     require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer",       "esri/widgets/ScaleBar",
+      "esri/widgets/Legend"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, ScaleBar, Legend) {
 
       //SET KEY FOR ACCESS
-      esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
+      //esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
 
       //SET UP BASE LAYER
-      const map = new Map({
-        basemap: "arcgis/topographic" // basemap styles service
+      // const map = new Map({
+      //   basemap: "arcgis/topographic" // basemap styles service
+      // });
+
+      const webmap = new WebMap({
+        portalItem: {
+          id: "c2a933f40b884dfdacfa6bfec16f2fa7" //personal web page id from catamaralina
+        }
       });
 
 
       //SET UP VIEW AND MAP FOCUS
       const view = new MapView({
-        map: map,
-        center: [135.7354089, 35.0175169], // Longitude, latitude
-        zoom: 13, // Zoom level
-        container: "viewDiv" // Div element
+        container: "viewDiv", // Div element
+        map: webmap
       });
+
+      //ADD WIDGETS
+      //scale bar
+      const scalebar = new ScaleBar({
+        view: view
+      });
+
+      view.ui.add(scalebar, "bottom-left");
+
+
 
       //CREATE GRAPHICS LAYER
       const graphicsLayer = new GraphicsLayer();

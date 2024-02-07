@@ -56,31 +56,136 @@
     <script src="https://js.arcgis.com/4.28/"></script>
 
     <script>
-      require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/widgets/ScaleBar", "esri/widgets/Legend"], 
-      function(esriConfig, WebMap, MapView, ScaleBar, Legend) {
-        // esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
-        const webmap = new WebMap({
-          portalItem: {
-          id: "c2a933f40b884dfdacfa6bfec16f2fa7" // undergrad group project web map 
-          }
-        });
+     //IMPORT REQUIRED MODULES
+     require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
 
-        const view = new MapView({
-          container: "viewDiv",
-          map: webmap
-        });
-        
-        const scalebar = new ScaleBar({
-          view: view
-        });
+      //SET KEY FOR ACCESS
+      esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
 
-        view.ui.add(scalebar, "bottom-left");
+      //SET UP BASE LAYER
+      const map = new Map({
+        basemap: "arcgis/topographic" // basemap styles service
+      });
 
-        const legend = new Legend ({
-          view: view
-        });
 
-        view.ui.add(legend, "top-right");
+      //SET UP VIEW AND MAP FOCUS
+      const view = new MapView({
+        map: map,
+        center: [135.7354089, 35.0175169], // Longitude, latitude
+        zoom: 13, // Zoom level
+        container: "viewDiv" // Div element
+      });
+
+      //CREATE GRAPHICS LAYER
+      const graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
+
+      //ADDITIONAL DESCRIPTION POPUP
+      const popupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      }
+      //CREATE POINT
+      const point = { 
+        type: "point",
+        longitude: 135.7463893,
+        latitude: 34.9864358
+      };
+
+      const simpleMarkerSymbol = {
+        type: "simple-marker",
+        color: [249,170,187],  // Light pink
+        outline: {
+          color: [211,115,179], // Darker pink
+          width: 1
+        }
+      };
+
+      const attributesP = {
+        Name: "Place",
+        Description: "Umekoji Park has lovely walking areas and an aquarium."
+      }
+
+      //ADD POINT GRAPHIC
+      const pointGraphic = new Graphic({
+        geometry: point,
+        symbol: simpleMarkerSymbol,
+        attributes: attributesP,
+        popupTemplate: popupTemplate
+      });
+
+      graphicsLayer.add(pointGraphic);
+
+
+      // CREATE POLYLINE GEOMETRY
+      const polyline = {
+          type: "polyline",
+          paths: [
+              [135.7625979, 35.0485703], //Longitude, latitude 
+              [135.7604489, 35.0376503], //Longitude, latitude
+              [135.7635486, 35.0230347]  //Longitude, latitude
+          ]
+      };
+      const simpleLineSymbol = {
+          type: "simple-line",
+          color: [211,115,179], // darker pink
+          width: 2
+      };
+
+      const attributesPL = {
+        Name: "Trip",
+        Description: "Quiet walk in beautiful gardens and world protected areas filled with nature."
+      }
+      // POLYLINE
+      const polylineGraphic = new Graphic({
+        geometry: polyline,
+        symbol: simpleLineSymbol,
+      
+        //POP UP ADDITION
+        attributes: attributesPL,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(polylineGraphic);
+
+             // CREATE POLYGON GEOMETRY
+             const polygon = {
+        type: "polygon",
+        rings: [
+          [135.6744587, 35.0090085], //Longitude, latitude //Monkey park
+          [135.6685515, 35.0170101], //Longitude, latitude //Bamboo forest
+          [135.674276, 35.0166128], //Longitude, latitude //tenryu-ji
+          [135.6781063, 35.0152475],   //Longitude, latitude //kimono forest
+          [135.6799142, 35.0120795]  //Longitude, latitude //island park
+        ]
+      };
+
+      //FILL POLYGON
+      const simpleFillSymbol = {
+        type: "simple-fill",
+        color: [249, 170, 187, .75],  // light pink, opacity 75%
+        outline: {
+          color: [211, 115,179], //dark pink
+          width: 1
+        }
+      };
+
+      //POLYGON POPUP
+      const attributesPG = {
+        Name: "Area",
+        Description: "Arashiyama is a good area to walk around."
+      }
+
+      // POLYGON GRAPHIC ADD
+      const polygonGraphic = new Graphic({
+        geometry: polygon,
+        symbol: simpleFillSymbol,
+
+        //POP UP ADDITION
+        attributes: attributesPG,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(polygonGraphic);
+
 
       });
     </script>
@@ -90,13 +195,11 @@
   
   <body>
     <div class="banner">
-      <h1>京都市</h1> <!--Kyoto-->
-      <p></p> <!--Each place is interesting and has beautiful nature-->
-
-      <p></p> <!--Note: Some coordinates are placed offset-->
-      <p></p>
-      <p>WDPA: 3, 4, 5, 8, 7</p>
-      <p>&#127807; &#127800; &#128149; &#127802; &#x1F338; &#128149; &#127807; &#127809;</p>
+      <h1>Hello, Kyoto &#128149; </h1> <!--Kyoto-->
+      <p>&#127803; Place: Umekoji Park with Kyoto Aquarium in it.</p>
+      <p>&#127799; Trip: Day starting with Kyoto Botanical Gardens, then walking in Kamagawa Park along the river, a world protected area, and stopping to look at herons and other wildlife. All the while heading towards Kyoto National Garden to end the day.</p>
+      <p>&#127801; Area: Arashiyama is a good place to wander and see what is interesting. Parks to walk in, monkeys to feed, bridges to cross, food to eat.</p>
+      <p> &#127807; &#127800; &#128174; &#127802; &#x1F338; &#127809; &#127807;  </p>
     </div>
 
     <div class="content">
