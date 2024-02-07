@@ -58,7 +58,7 @@
     <script>
      //IMPORT REQUIRED MODULES
      require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/ScaleBar",
-     "esri/layers/FeatureLayer"], function(esriConfig, WebMap, MapView, Graphic, GraphicsLayer, ScaleBar, FeatureLayer) {
+     "esri/layers/GeoJSONLayer"], function(esriConfig, WebMap, MapView, Graphic, GraphicsLayer, ScaleBar, GeoJSONLayer) {
 
       //SET KEY FOR ACCESS
       //esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
@@ -201,10 +201,11 @@
       });
       graphicsLayer.add(polygonGraphic);
 
-      //THROW IN A FEATURE LAYER
-      const flowerLayer = new FeatureLayer({
-        url: "https://services.arcgis.com/4TKcmj8FHh5Vtobt/arcgis/rest/services/Kyoto_Flower/FeatureServer"
+      //THROW IN A geojson LAYER
+      const geojsonlayer = new GeoJSONLayer({
+        url: "flowerk.geojson",
       });
+      map.add(geojsonlayer);  // adds the layer to the map
 
 
       });
