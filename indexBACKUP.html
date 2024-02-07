@@ -60,7 +60,7 @@
      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/layers/FeatureLayer", "esri/layers/GeoJSONLayer", "esri/views/layers/GeoJSONLayerView"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, GeoJSONLayer, FeatureLayer, GeoJSONLayerView) {
 
       //SET KEY FOR ACCESS
-      //esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
+      esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
 
       //SET UP BASE LAYER
       const map = new Map({
@@ -84,7 +84,8 @@
       const popupTemplate = {
         title: "{Name}",
         content: "{Description}"
-      }
+      };
+
       //CREATE POINT
       const point = { 
         type: "point",
@@ -104,7 +105,7 @@
       const attributesP = {
         Name: "Place",
         Description: "Umekoji Park has lovely walking areas and an aquarium."
-      }
+      };
 
       //ADD POINT GRAPHIC
       const pointGraphic = new Graphic({
@@ -135,7 +136,8 @@
       const attributesPL = {
         Name: "Trip",
         Description: "Quiet walk in beautiful gardens and world protected areas filled with nature."
-      }
+      };
+
       // POLYLINE
       const polylineGraphic = new Graphic({
         geometry: polyline,
@@ -173,7 +175,7 @@
       const attributesPG = {
         Name: "Area",
         Description: "Arashiyama is a good area to walk around."
-      }
+      };
 
       // POLYGON GRAPHIC ADD
       const polygonGraphic = new Graphic({
