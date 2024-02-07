@@ -57,8 +57,8 @@
 
     <script>
      //IMPORT REQUIRED MODULES
-     require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer",       "esri/widgets/ScaleBar",
-      "esri/widgets/Legend"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, ScaleBar, Legend) {
+     require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/ScaleBar",
+     "esri/layers/FeatureLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, ScaleBar, FeatureLayer) {
 
       //SET KEY FOR ACCESS
       //esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
@@ -200,6 +200,11 @@
         popupTemplate: popupTemplate
       });
       graphicsLayer.add(polygonGraphic);
+
+      //THROW IN A FEATURE LAYER
+      const flowerLayer = new FeatureLayer({
+        url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/fall_geom65_tree_collection_db/FeatureServer/0"
+      });
 
 
       });
