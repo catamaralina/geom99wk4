@@ -1,0 +1,107 @@
+<!-- SOURCE: https://developers.google.com/maps/documentation/javascript/examples/advanced-markers-accessibility -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Hello, Kyoto</title>
+
+    <style>
+        div.content, .banner {
+          border: solid #e46b85 2px;
+          max-width: 900px;
+          align-content: center;
+          background-color: white;
+          margin: auto;
+          padding: 20px;
+          float: center;
+          margin-bottom: 10px;
+          height: auto;
+        }
+
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 75%;
+            width: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #F9AABB;
+            float: center;
+            font-family: 'Lucida Sans Regular', sans-serif;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+        h1, p { color: #25242A; text-align: center;}
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.28/"></script>
+
+    <script>
+      require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/widgets/ScaleBar", "esri/widgets/Legend"], 
+      function(esriConfig, WebMap, MapView, ScaleBar, Legend) {
+        // esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
+        const webmap = new WebMap({
+          portalItem: {
+          id: "c2a933f40b884dfdacfa6bfec16f2fa7" // undergrad group project web map 
+          }
+        });
+
+        const view = new MapView({
+          container: "viewDiv",
+          map: webmap
+        });
+        
+        const scalebar = new ScaleBar({
+          view: view
+        });
+
+        view.ui.add(scalebar, "bottom-left");
+
+        const legend = new Legend ({
+          view: view
+        });
+
+        view.ui.add(legend, "top-right");
+
+      });
+    </script>
+
+  </head>
+
+  
+  <body>
+    <div class="banner">
+      <h1>京都市</h1> <!--Kyoto-->
+      <p></p> <!--Each place is interesting and has beautiful nature-->
+
+      <p></p> <!--Note: Some coordinates are placed offset-->
+      <p></p>
+      <p>WDPA: 3, 4, 5, 8, 7</p>
+      <p>&#127807; &#127800; &#128149; &#127802; &#x1F338; &#128149; &#127807; &#127809;</p>
+    </div>
+
+    <div class="content">
+      <div id="viewDiv"></div>
+    </div>
+
+  </body>
+</html>

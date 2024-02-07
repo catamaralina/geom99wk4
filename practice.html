@@ -64,6 +64,7 @@
         }
       };
 
+      //POINT POPUP
       const attributesP = {
         Name: "point",
         Description: "I AM WITHOUT DIRECTION"
@@ -94,6 +95,7 @@
           width: 2
       };
 
+      //POLYLINE POPUP
       const attributesPL = {
         Name: "LINE",
         Description: "I AM A LINE"
@@ -104,7 +106,7 @@
         symbol: simpleLineSymbol,
        
         //POP UP ADDITION
-        attributes: attributesPl,
+        attributes: attributesPL,
         popupTemplate: popupTemplate
       });
       graphicsLayer.add(polylineGraphic);
@@ -133,12 +135,11 @@
         }
       };
 
-
+      //POLYGON POPUP
       const attributesPG = {
         Name: "Pentagon",
         Description: "I AM A PENTAGON POLYGON"
       }
-
 
       // POLYGON GRAPHIC ADD
       const polygonGraphic = new Graphic({

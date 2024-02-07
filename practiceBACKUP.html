@@ -1,63 +1,26 @@
-<!-- SOURCE: https://developers.google.com/maps/documentation/javascript/examples/advanced-markers-accessibility -->
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>Hello, Kyoto</title>
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
 
     <style>
-        div.content, .banner {
-          border: solid #e46b85 2px;
-          max-width: 900px;
-          align-content: center;
-          background-color: white;
-          margin: auto;
-          padding: 20px;
-          float: center;
-          margin-bottom: 10px;
-          height: auto;
-        }
-
-        /* Always set the map height explicitly to define the size of the div
-        * element that contains the map. */
-        #viewDiv {
-            padding: 0;
-            margin: 0;
-            height: 75%;
-            width: 100%;
-        }
-
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: #F9AABB;
-            float: center;
-            font-family: 'Lucida Sans Regular', sans-serif;
-        }
-
-        .title {
-            font-weight: bold;
-        }
-
-        #infowindow-content {
-            display: none;
-        }
-
-        #map #infowindow-content {
-            display: inline;
-        }
-        h1, p { color: #25242A; text-align: center;}
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
     </style>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
 
     <script>
-     //IMPORT REQUIRED MODULES
-     require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
+      //IMPORT REQUIRED MODULES
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
 
       //SET KEY FOR ACCESS
       esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
@@ -116,7 +79,7 @@
       graphicsLayer.add(pointGraphic);
 
 
-      // CREATE POLYLINE GEOMETRY
+       // CREATE POLYLINE GEOMETRY
       const polyline = {
           type: "polyline",
           paths: [
@@ -139,33 +102,61 @@
       const polylineGraphic = new Graphic({
         geometry: polyline,
         symbol: simpleLineSymbol,
-      
+       
         //POP UP ADDITION
-        attributes: attributesPL,
+        attributes: attributesPl,
         popupTemplate: popupTemplate
       });
       graphicsLayer.add(polylineGraphic);
+
+
+
+       // CREATE POLYGON GEOMETRY
+      const polygon = {
+        type: "polygon",
+        rings: [
+          [-118.818984489994, 34.0137559967283], //Longitude, latitude
+          [-118.806796597377, 34.0215816298725], //Longitude, latitude
+          [-118.791432890735, 34.0163883241613], //Longitude, latitude
+          [-118.79596686535, 34.008564864635],   //Longitude, latitude
+          [-118.808558110679, 34.0035027131376]  //Longitude, latitude
+        ]
+      };
+
+      //FILL POLYGON
+      const simpleFillSymbol = {
+        type: "simple-fill",
+        color: [227, 139, 79, 0.8],  // Orange, opacity 80%
+        outline: {
+          color: [255, 255, 255],
+          width: 1
+        }
+      };
+
+
+      const attributesPG = {
+        Name: "Pentagon",
+        Description: "I AM A PENTAGON POLYGON"
+      }
+
+
+      // POLYGON GRAPHIC ADD
+      const polygonGraphic = new Graphic({
+        geometry: polygon,
+        symbol: simpleFillSymbol,
+
+        //POP UP ADDITION
+        attributes: attributesPG,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(polygonGraphic);
+
 
       });
     </script>
 
   </head>
-
-  
   <body>
-    <div class="banner">
-      <h1>京都市</h1> <!--Kyoto-->
-      <p></p> <!--Each place is interesting and has beautiful nature-->
-
-      <p></p> <!--Note: Some coordinates are placed offset-->
-      <p></p>
-      <p>WDPA: 3, 4, 5, 8, 7</p>
-      <p>&#127807; &#127800; &#128149; &#127802; &#x1F338; &#128149; &#127807; &#127809;</p>
-    </div>
-
-    <div class="content">
-      <div id="viewDiv"></div>
-    </div>
-
+    <div id="viewDiv"></div>
   </body>
 </html>
