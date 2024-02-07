@@ -70,7 +70,7 @@
 
       const webmap = new WebMap({
         portalItem: {
-          id: "c2a933f40b884dfdacfa6bfec16f2fa7" //personal web page id from catamaralina
+          id: "c2a933f40b884dfdacfa6bfec16f2fa7" //personal web page item id from catamaralina
         }
       });
 
@@ -202,9 +202,9 @@
       graphicsLayer.add(polygonGraphic);
 
       //THROW IN A FEATURE LAYER
-      // const flowerLayer = new FeatureLayer({
-      //   url: "https://services.arcgis.com/4TKcmj8FHh5Vtobt/arcgis/rest/services/Kyoto_Flower/FeatureServer"
-      // });
+      const flowerLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/4TKcmj8FHh5Vtobt/arcgis/rest/services/Kyoto_Flower/FeatureServer"
+      });
 
 
       });
@@ -215,7 +215,7 @@
   
   <body>
     <div class="banner">
-      <h1>Hello, Kyoto &#128149; </h1> <!--Kyoto-->
+      <h1>Hello, Kyoto &#128149; </h1>
       <p>&#127803; Place: Umekoji Park with Kyoto Aquarium in it.</p>
       <p>&#127799; Trip: Day starting with Kyoto Botanical Gardens, then walking in Kamagawa Park along the river, a world protected area, and stopping to look at herons and other wildlife. All the while heading towards Kyoto National Garden to end the day.</p>
       <p>&#127801; Area: Arashiyama is a good place to wander and see what is interesting. Parks to walk in, monkeys to feed, bridges to cross, food to eat.</p>
