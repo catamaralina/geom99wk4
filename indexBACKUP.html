@@ -57,7 +57,7 @@
 
     <script>
      //IMPORT REQUIRED MODULES
-     require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
+     require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/layers/GeoJSONLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, GeoJSONLayer) {
 
       //SET KEY FOR ACCESS
       esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
@@ -185,6 +185,12 @@
         popupTemplate: popupTemplate
       });
       graphicsLayer.add(polygonGraphic);
+
+      //THROW IN A geojson LAYER
+      const geojsonlayer = new GeoJSONLayer({
+        url: "https://github.com/catamaralina/geom99wk4/blob/main/flowerk.geojson",
+      });
+      map.add(geojsonlayer);  // adds the layer to the map
 
 
       });
