@@ -137,7 +137,7 @@
           type: "polyline",
           paths: [
               [135.7625979, 35.0485703], //Longitude, latitude 
-              [,135.7717375, 35.029883], //Long Lat Park delta
+              [135.7717375, 35.029883], //Long Lat Park delta
               //[135.7604489, 35.0376503], //Longitude, latitude
               [135.7635486, 35.0230347]  //Longitude, latitude
           ]
@@ -221,14 +221,13 @@
         },
       };
 
-      const geojsonlayer = new GeoJSONLayer({
+      const geojsonLayer = new GeoJSONLayer({
         url: "https://github.com/catamaralina/geom99wk4/blob/main/flowerk.geojson",
         copyright: "Tali Jonker",
         popupTemplate: template,
         renderer: renderer
       });
       webmap.add(geojsonlayer);  // adds the layer to the map
-
 
       });
     </script>
