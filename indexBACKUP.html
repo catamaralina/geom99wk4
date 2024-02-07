@@ -57,10 +57,10 @@
 
     <script>
      //IMPORT REQUIRED MODULES
-     require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/layers/GeoJSONLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, GeoJSONLayer) {
+     require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/layers/FeatureLayer", "esri/layers/GeoJSONLayer", "esri/views/layers/GeoJSONLayerView"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, GeoJSONLayer, FeatureLayer, GeoJSONLayerView) {
 
       //SET KEY FOR ACCESS
-      esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
+      //esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
 
       //SET UP BASE LAYER
       const map = new Map({
@@ -186,12 +186,20 @@
       });
       graphicsLayer.add(polygonGraphic);
 
+
+      //WHICH LAYER WILL WORK FIRST?
       //THROW IN A geojson LAYER
       const geojsonlayer = new GeoJSONLayer({
         url: "https://github.com/catamaralina/geom99wk4/blob/main/flowerk.geojson",
       });
       map.add(geojsonlayer);  // adds the layer to the map
 
+      //THROWN IN A feature LAYER
+      const featureLayer = new FeatureLayer({
+        url:
+          "https://services.arcgis.com/4TKcmj8FHh5Vtobt/arcgis/rest/services/Kyoto_Flower/FeatureServer/0"
+      });
+      map.add(featureLayer);
 
       });
     </script>
