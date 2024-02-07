@@ -201,9 +201,30 @@
       });
       graphicsLayer.add(polygonGraphic);
 
+
+
       //THROW IN A geojson LAYER
+      const template = {
+        title: "Flower",
+        content: "The flowers I wanted",
+      };
+
+      const renderer = {
+        type: "simple",
+        symbol: {
+          type: "simple-marker",
+          color: "blue",
+          outline: {
+            color: "white"
+          }
+        },
+      };
+
       const geojsonlayer = new GeoJSONLayer({
         url: "https://github.com/catamaralina/geom99wk4/blob/main/flowerk.geojson",
+        copyright: "Tali Jonker",
+        popupTemplate: template,
+        renderer: renderer
       });
       webmap.add(geojsonlayer);  // adds the layer to the map
 
