@@ -43,12 +43,18 @@
       const graphicsLayer = new GraphicsLayer();
       map.add(graphicsLayer);
 
+      //ADDITIONAL DESCRIPTION POPUP
+      const popupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      }
       //CREATE POINT
       const point = { 
         type: "point",
         longitude: -118.80657463861,
         latitude: 34.0005930608889
       };
+
       const simpleMarkerSymbol = {
         type: "simple-marker",
         color: [226, 119, 40],  // Orange
@@ -58,11 +64,18 @@
         }
       };
 
+      const attributesP = {
+        Name: "point",
+        Description: "I AM WITHOUT DIRECTION"
+      }
       //ADD POINT GRAPHIC
       const pointGraphic = new Graphic({
         geometry: point,
-        symbol: simpleMarkerSymbol
+        symbol: simpleMarkerSymbol,
+        attributes: attributesP,
+        popupTemplate: popupTemplate
       });
+
       graphicsLayer.add(pointGraphic);
 
 
@@ -81,10 +94,18 @@
           width: 2
       };
 
+      const attributesPL = {
+        Name: "LINE",
+        Description: "I AM A LINE"
+      }
       // POLYLINE
       const polylineGraphic = new Graphic({
-          geometry: polyline,
-          symbol: simpleLineSymbol
+        geometry: polyline,
+        symbol: simpleLineSymbol,
+       
+        //POP UP ADDITION
+        attributes: attributesPl,
+        popupTemplate: popupTemplate
       });
       graphicsLayer.add(polylineGraphic);
 
@@ -112,14 +133,10 @@
         }
       };
 
-      //ADDITIONAL POLYGON POPUP
-      const popupTemplate = {
-        title: "{Name}",
-        content: "{Description}"
-      }
-      const attributes = {
-        Name: "Graphic",
-        Description: "I AM A POLYGON"
+
+      const attributesPG = {
+        Name: "Pentagon",
+        Description: "I AM A PENTAGON POLYGON"
       }
 
 
@@ -129,7 +146,7 @@
         symbol: simpleFillSymbol,
 
         //POP UP ADDITION
-        attributes: attributes,
+        attributes: attributesPG,
         popupTemplate: popupTemplate
       });
       graphicsLayer.add(polygonGraphic);
