@@ -61,7 +61,7 @@
      "esri/layers/GeoJSONLayer"], function(esriConfig, WebMap, MapView, Graphic, GraphicsLayer, ScaleBar, GeoJSONLayer) {
 
       //SET KEY FOR ACCESS
-      //esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
+      esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
 
       //SET UP BASE LAYER
       // const map = new Map({
@@ -93,7 +93,7 @@
 
       //CREATE GRAPHICS LAYER
       const graphicsLayer = new GraphicsLayer();
-      map.add(graphicsLayer);
+      webmap.add(graphicsLayer);
 
       //ADDITIONAL DESCRIPTION POPUP
       const popupTemplate = {
@@ -205,7 +205,7 @@
       const geojsonlayer = new GeoJSONLayer({
         url: "https://github.com/catamaralina/geom99wk4/blob/main/flowerk.geojson",
       });
-      map.add(geojsonlayer);  // adds the layer to the map
+      webmap.add(geojsonlayer);  // adds the layer to the map
 
 
       });
