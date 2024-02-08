@@ -20,18 +20,18 @@
 
     <script>
       //IMPORT REQUIRED MODULES
-      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/layers/GeoJSONLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, GeoJSONLayer) {
 
       //SET KEY FOR ACCESS
       esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
 
       const map = new Map({
-        basemap: "arcgis-topographic" // Basemap layer
+        basemap: "arcgis-navigation" // Basemap layer
       });
-
+   
       const view = new MapView({
         map: map,
-        center: [-118.805, 34.027],
+        center: [135.7354089, 35.0175169],
         zoom: 13, // scale: 72223.819286
         container: "viewDiv",
         constraints: {
@@ -152,6 +152,11 @@
       });
       graphicsLayer.add(polygonGraphic);
 
+      //THROW IN A geojson LAYER
+      const geojsonLayer = new GeoJSONLayer({
+        url: "https://github.com/catamaralina/geom99wk4/blob/main/flowerk.geojson"
+      });
+      webmap.addLayer(geojsonlayer);  // adds the layer to the map
 
       });
     </script>
