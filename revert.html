@@ -26,7 +26,7 @@
 
     <script src="https://unpkg.com/@esri/arcgis-rest-request@4.0.0/dist/bundled/request.umd.js"></script>
     <script src="https://unpkg.com/@esri/arcgis-rest-routing@4.0.0/dist/bundled/routing.umd.js"></script>
-    <script src="https://js.arcgis.com/4.28/"></script>
+    <script src="https://js.arcgis.com/4.19/"></script>
   </head>
 
   <body>
@@ -36,6 +36,8 @@
     <div id="directions">Click on the map to create a start and end for the route.</div>
 
     <script>
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer"], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
+
       //SET KEY FOR ACCESS
       esriConfig.apiKey = "AAPKf39b27d6d221447ca21fadc43cc080d4CG_Kd1VG3VI-i0wDMbTlWQBdQqiClnZs5oPxl-Rzark8PxcdF0wXd-qVSPS7d07N";
      
@@ -146,7 +148,8 @@
       .then(function (map) {
           addCircleLayers();
 
-        });
+        } );
+      });
     </script>
 
   </body>
