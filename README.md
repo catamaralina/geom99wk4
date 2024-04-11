@@ -1,5 +1,7 @@
 # geom99wk4
 
+Published map on website: https://catamaralina.github.io/geom99wk4/index.html
+
 url 1: https://developers.arcgis.com/layers/20d2845c9c8547fd8adf2bc4e6a2a0da/settings
 	layer id: 20d2845c9c8547fd8adf2bc4e6a2a0da
 
